@@ -4,6 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<constant name="struts.custom.i18n.resources" value="resources.messages" />
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	
@@ -16,5 +17,5 @@
 	    <action name="login" class="com.hitema.login.loginController">
 	     	 <result>/views/login.jsp</result>
 	    </action>
-	</package>  
+	</package>
 </struts>
