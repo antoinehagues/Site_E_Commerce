@@ -4,14 +4,17 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-<constant name="struts.devMode" value="false" />
-
-<package name="com.hitema"  namespace="/" extends="struts-default">   
-    <default-action-ref name="home"/> 
-    
-    <action name="home">
-     	 <result>/views/home.jsp</result>
-    </action>
-</package>   
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	
+	<package name="com.hitema.home"  namespace="/home" extends="struts-default">    
+	    <action name="home" class="com.hitema.home.homeController">
+	     	 <result>/views/home.jsp</result>
+	    </action>
+	</package>  
+	<package name="com.hitema.login"  namespace="/login" extends="struts-default">    
+	    <action name="login" class="com.hitema.login.loginController">
+	     	 <result>/views/login.jsp</result>
+	    </action>
+	</package>  
 </struts>
