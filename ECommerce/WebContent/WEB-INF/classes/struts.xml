@@ -8,9 +8,12 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	
-	<package name="com.hitema.home"  namespace="/home" extends="struts-default">    
-	    <action name="home" class="com.hitema.home.homeController">
-	     	 <result>/views/home.jsp</result>
+	<package name="com.hitema.home"  namespace="/home" extends="struts-default"> 
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="home" class="com.hitema.tiles.TilesPage">
+	     	 <result name="page" type="tiles">page</result>
 	    </action>
 	</package>  
 	<package name="com.hitema.login"  namespace="/login" extends="struts-default">    
