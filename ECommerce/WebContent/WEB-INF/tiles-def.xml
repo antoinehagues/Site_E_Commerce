@@ -17,4 +17,9 @@
   	<put-attribute name="body" value="/views/login.jsp"></put-attribute>
   </definition>
   
+  <definition name="article" extends="home">
+  	<put-attribute name="title" value="Article"></put-attribute>
+  	<put-attribute name="body" value="/views/article.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>
