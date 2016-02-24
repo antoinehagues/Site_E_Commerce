@@ -4,12 +4,17 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-  <definition name="page" template="/templates/template.jsp">
+  <definition name="home" template="/templates/template.jsp">
     <put-attribute name="title" value="Boutique | Articles" />
     <put-attribute name="header" value="/views/partials/header.jsp" />
     <put-attribute name="menu" value="/views/partials/common_menu.jsp" />
     <put-attribute name="body" value="/views/home.jsp" />
     <put-attribute name="footer" value="/views/partials/footer.jsp" />
+  </definition>
+  
+  <definition name="login" extends="home">
+  	<put-attribute name="title" value="Login"></put-attribute>
+  	<put-attribute name="body" value="/views/login.jsp"></put-attribute>
   </definition>
   
 </tiles-definitions>
