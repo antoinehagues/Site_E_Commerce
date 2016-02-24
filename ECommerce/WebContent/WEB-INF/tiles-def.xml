@@ -27,4 +27,9 @@
   	<put-attribute name="body" value="/views/panier.jsp"></put-attribute>
   </definition>
   
+  <definition name="achat" extends="home">
+  	<put-attribute name="title" value="Achat"></put-attribute>
+  	<put-attribute name="body" value="/views/achat.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>
