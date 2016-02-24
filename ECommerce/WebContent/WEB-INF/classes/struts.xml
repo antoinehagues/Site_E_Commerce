@@ -25,4 +25,32 @@
 	     	 <result name="login" type="tiles">login</result>
 	    </action>
 	</package>
+	
+	<package name="Article"  namespace="/article" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="article" class="com.hitema.article.ArticleController">
+	     	 <result name="article" type="tiles">article</result>
+	    </action>
+	</package>
+	
+	<package name="Panier"  namespace="/panier" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="panier" class="com.hitema.panier.PanierController">
+	     	 <result name="panier" type="tiles">panier</result>
+	    </action>
+	</package>
+	
+	<package name="Achat"  namespace="/achat" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="achat" class="com.hitema.achat.AchatController">
+	     	 <result name="achat" type="tiles">achat</result>
+	    </action>
+	</package>
+	
 </struts>

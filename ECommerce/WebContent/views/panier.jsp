@@ -1,0 +1,1 @@
+<h1>Panier page !</h1>
