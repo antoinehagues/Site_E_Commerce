@@ -23,7 +23,7 @@ public class DBCommerceController{
 	        PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, id);
 			ResultSet rs = ps.executeQuery();
-			DBUtils.getArticleFromResultSet(rs);
+			article = DBUtils.getArticleFromResultSet(rs);
 		} catch (SQLException e) {
 		}
 		return article;
