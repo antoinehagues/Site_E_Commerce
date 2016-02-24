@@ -34,4 +34,14 @@
 	     	 <result name="article" type="tiles">article</result>
 	    </action>
 	</package>
+	
+	<package name="Panier"  namespace="/panier" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="panier" class="com.hitema.panier.PanierController">
+	     	 <result name="panier" type="tiles">panier</result>
+	    </action>
+	</package>
+	
 </struts>

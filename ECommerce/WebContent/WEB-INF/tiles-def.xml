@@ -22,4 +22,9 @@
   	<put-attribute name="body" value="/views/article.jsp"></put-attribute>
   </definition>
   
+  <definition name="panier" extends="home">
+  	<put-attribute name="title" value="Panier"></put-attribute>
+  	<put-attribute name="body" value="/views/panier.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>
