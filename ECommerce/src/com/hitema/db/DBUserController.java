@@ -28,7 +28,7 @@ public class DBUserController {
         ps.setString(2, motdepasse);
         ResultSet rs = ps.executeQuery();
 		Id_User=rs.getString("id_ser");
-		
+		rs.close();
 		
 		} catch (SQLException e) {}
 		if(Id_User!=""){
@@ -55,6 +55,7 @@ public class DBUserController {
 			ps1.setString(3,nom);
 			ps1.setString(4,prenom);
 			ps1.executeUpdate();
+			rs.close();
 			return "Ajout dans la base OK";
 		}
 		else{
@@ -74,6 +75,7 @@ public class DBUserController {
 		ps.setString(1,id_user);
 		ResultSet rs=ps.executeQuery();
 		String tableau[]={rs.getString("nom"),rs.getString("prenom"),rs.getString("id_historique"),rs.getString("id_user"),rs.getString("montant")};
+		rs.close();
 		return tableau;
 		}
 		catch (SQLException e) {}
