@@ -14,6 +14,7 @@ public class DBUtils {
 	protected final static String ARTICLE_PRIX = "prix";
 	protected final static String ARTICLE_NAME = "nom";
 	protected final static String ARTICLE_IMGURL = "img";
+	protected final static String ARTICLE_DESCRIPTION = "description";
 	
 	public static ArticleBean getArticleFromResultSet(ResultSet rs) throws SQLException {
 		ArticleBean article = new ArticleBean();
@@ -23,6 +24,7 @@ public class DBUtils {
 			article.setPrix(rs.getString(ARTICLE_PRIX));
 			article.setNom(rs.getString(ARTICLE_NAME));
 			article.setImgURL(rs.getString(ARTICLE_IMGURL));
+			article.setDescription(rs.getString(ARTICLE_DESCRIPTION));
 		}
 		return article;
 	}
@@ -36,6 +38,7 @@ public class DBUtils {
 			article.setPrix(rs.getString(ARTICLE_PRIX));
 			article.setNom(rs.getString(ARTICLE_NAME));
 			article.setImgURL(rs.getString(ARTICLE_IMGURL));
+			article.setDescription(rs.getString(ARTICLE_DESCRIPTION));
 			articles.add(article);
 		}
 		return articles;

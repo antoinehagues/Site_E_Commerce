@@ -1,26 +1,20 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <div class="container">
 	<div class="row">
-        <div class="col-lg-4">
-          <h2>Safari bug warning!</h2>
-          <p class="text-danger">As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-        </div>
+		<s:iterator value="articles">
+	        <div class="col-lg-4">
+	          <h2><s:property value="nom"/></h2>
+	          <img style="width:150px" src="<s:url value="/images/articles/Jellyfish.jpg"/>">
+	          <p><s:property value="description"/></p>
+	          <p><s:property value="prix"/> euros</p>
+	          <p><s:property value="ref"/></p>
+				<s:url namespace="/article" action="article.action" var="detail" >
+				    <s:param name="id"><s:property value="id"/></s:param>
+				</s:url>
+	          <a class="btn btn-primary" href="<s:property value="#detail" />" >View details</a>
+	        </div>
+		</s:iterator>
 	</div>
 	<br/><br/><br/><br/>
 </div>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
-<s:iterator status="stat" value="articles">
-<s:property value="nom"/>     <s:property value="prix"/> 
-</s:iterator>

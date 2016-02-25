@@ -10,6 +10,7 @@ public class ArticleBean {
 	private String prix;
 	private String nom;
 	private String imgURL;
+	private String description;
 	
 	public String getId() {
 		return id;
@@ -46,5 +47,11 @@ public class ArticleBean {
 	public String toString() {
 		return "ArticleBean [id=" + id + ", ref=" + ref + ", prix=" + prix + ", nom=" + nom + ", imgURL=" + imgURL
 				+ "]";
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
