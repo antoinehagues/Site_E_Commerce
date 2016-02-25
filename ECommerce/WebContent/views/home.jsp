@@ -19,3 +19,8 @@
 	</div>
 	<br/><br/><br/><br/>
 </div>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<s:iterator status="stat" value="articles">
+<s:property value="nom"/>     <s:property value="prix"/> 
+</s:iterator>

@@ -2,6 +2,8 @@ package com.hitema.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.hitema.beans.ArticleBean;
 
@@ -23,6 +25,20 @@ public class DBUtils {
 			article.setImgURL(rs.getString(ARTICLE_IMGURL));
 		}
 		return article;
+	}
+
+	public static List<ArticleBean> getAllArticlesFromResultSet(ResultSet rs) throws SQLException {
+		List<ArticleBean> articles = new ArrayList<ArticleBean>();
+		while(rs.next()){
+			ArticleBean article = new ArticleBean();
+			article.setId(rs.getString(ARTICLE_ID));
+			article.setRef(rs.getString(ARTICLE_REF));
+			article.setPrix(rs.getString(ARTICLE_PRIX));
+			article.setNom(rs.getString(ARTICLE_NAME));
+			article.setImgURL(rs.getString(ARTICLE_IMGURL));
+			articles.add(article);
+		}
+		return articles;
 	}
 
 }
