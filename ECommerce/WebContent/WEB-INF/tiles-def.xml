@@ -32,4 +32,9 @@
   	<put-attribute name="body" value="/views/achat.jsp"></put-attribute>
   </definition>
   
+  <definition name="inscription" extends="home">
+  	<put-attribute name="title" value="Inscription"></put-attribute>
+  	<put-attribute name="body" value="/views/inscription.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>

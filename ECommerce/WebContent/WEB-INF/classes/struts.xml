@@ -53,4 +53,13 @@
 	    </action>
 	</package>
 	
+	<package name="Inscription"  namespace="/inscription" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="inscription" class="com.hitema.inscription.InscriptionController">
+	     	 <result name="inscription" type="tiles">inscription</result>
+	    </action>
+	</package>
+	
 </struts>
