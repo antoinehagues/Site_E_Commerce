@@ -62,4 +62,14 @@
 	    </action>
 	</package>
 	
+	<package name="CreerArticle"  namespace="/article" extends="struts-default">    
+	    <result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>   
+	    <action name="create" class="com.hitema.article.ArticleCreationController">
+	     	 <result name="createArticle" type="tiles">createArticle</result>
+	     	 <result name="success" type="tiles">home</result>
+	    </action>
+	</package>
+	
 </struts>

@@ -47,7 +47,23 @@ public class DBCommerceController{
 		return articles;
 	}
 	
+	public int addArticle(String name) {
+		int status = 0;
+		try {
+			String sql = "INSERT INTO article (ref,prix,nom,img,description) VALUES ('',25,?,'','TESTDESCRIPT')";
+			Connection connection = db.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, name);
+			status=ps.executeUpdate(); ;
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
 	public void close() {
 		db.close();
 	}
+
 }

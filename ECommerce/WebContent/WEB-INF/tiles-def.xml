@@ -37,4 +37,9 @@
   	<put-attribute name="body" value="/views/inscription.jsp"></put-attribute>
   </definition>
   
+  <definition name="createArticle" extends="home">
+  	<put-attribute name="title" value="Creer article"></put-attribute>
+  	<put-attribute name="body" value="/views/createArticle.jsp"></put-attribute>
+  </definition>
+  
 </tiles-definitions>
