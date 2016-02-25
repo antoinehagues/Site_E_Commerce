@@ -16,20 +16,44 @@ public class DBUserController {
 	
 	public String Connexion (String pseudo , String motdepasse){
 		
-		String sql = "SELECT nom , prenom , id_historique , id_user , montant FROM user WHERE pseudo='"+pseudo+"' AND mdp='"+motdepasse+"'";
+		String sql = "SELECT nom , prenom , id_historique , id_user , montant FROM user WHERE pseudo=? AND mdp=?";
 		Connection connection = db.getConnection();
-		ResultSet resultat = connection.executeQuery(sql);
-		Id_User=resultat.getString("id_ser");
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, pseudo);
+        ps.setString(2, motdepasse);
+        ResultSet rs = ps.executeQuery();
+		Id_User=rs.getString("id_ser");
 		
 		if(Id_User!=""){
 			return Id_User;
 		}
 		else{
-			return "Connexion KO";
+			return "Erreur de connection Pseudo / Mot De Passe";
 		}
 	}
 	
-	public String AddUser(String id_user){
+	public String AddUser(String pseudo,String mdp,String nom,String prenom){
+		
+		String sql="SELECT id_user FROM user WHERE pseudo=?";
+		Connection connection = db.getConnection();
+		PrepareStatement ps=connection.prepareStatement(sql);
+		ps.setString(1,pseudo);
+		ResultSet rs = ps.executeQuery();
+		if(rs.pseudo!=""){
+			String sql="INSERT INTO User(pseudo,mdp,nom,prénom,montant) VALUES(?,?,?,?,5000);";
+			Connection connection=db.getConnection();
+			PrepareStatement ps=connection.prepareStatement(sql);
+			ps.setString(1,pseudo);
+			ps.setString(2,mdp);
+			ps.setString(3,nom);
+			ps.setString(4,prenom);
+			ps.executeUpdate();
+			return "Ajout dans la base OK";
+		}
+		else{
+			return "Erreur , le pseudo existe deja !";
+		}
+		
 		
 		return "Test";
 
@@ -37,10 +61,12 @@ public class DBUserController {
 	
 	public String[] GetInfosUser(String id_user){
 		
-		String sql = "SELECT nom , prenom , id_historique , id_user , montant FROM user WHERE mdp='"+id_user+"'";
+		String sql = "SELECT nom , prenom , id_historique , id_user , montant FROM user WHERE mdp=1";
 		Connection connection = db.getConnection();
-		ResultSet resultat = connection.executeQuery(sql);
-		String tableau[]={resultat.getString("nom"),resultat.getString("prenom"),resultat.getString("id_historique"),resultat.getString("id_user"),resultat.getString("montant")};
+		PrepareStatement ps=connection.prepareStatement(sql);
+		ps.setString(1,id_user);
+		ResultSet rs=ps.executeQuery();
+		String tableau[]={rs.getString("nom"),rs.getString("prenom"),rs.getString("id_historique"),rs.getString("id_user"),rs.getString("montant")};
 		return tableau;
 	}
 	
