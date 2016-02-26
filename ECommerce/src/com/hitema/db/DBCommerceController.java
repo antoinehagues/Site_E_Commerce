@@ -32,12 +32,13 @@ public class DBCommerceController{
 		return article;
 	}
 	
-	public List<ArticleBean> getAllArticles(){
+	public List<ArticleBean> getAllArticles(String userId){
 		List<ArticleBean> articles = new ArrayList<ArticleBean>();
 		try {
-			String sql = "SELECT * FROM article";
+			String sql = "SELECT * FROM article WHERE id_user = ?";
 			Connection connection = db.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, userId);
 			ResultSet rs = ps.executeQuery();
 			articles = DBUtils.getAllArticlesFromResultSet(rs);
 			rs.close();
@@ -69,8 +70,36 @@ public class DBCommerceController{
 		db.close();
 	}
 
-	public void addArticleToPanier(String id) {
-				System.out.println(id);
+	public int addArticleToPanier(String id, int articleNumber, String userId) {
+		int status = 0;
+		try {
+			String sql = "INSERT INTO panier (id_article,id_user,qte) VALUES (?,?,?)";
+			Connection connection = db.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.setString(2, userId);
+			ps.setString(3, "2");
+			status=ps.executeUpdate(); ;
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+
+	public ArrayList<ArticleBean> getAllArticlesFromPanier() {
+		List<ArticleBean> articles = new ArrayList<ArticleBean>();
+		try {
+			String sql = "SELECT * FROM panier WHERE";
+			Connection connection = db.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			articles = DBUtils.getAllArticlesFromResultSet(rs);
+			rs.close();
+			connection.close();
+		} catch (SQLException e) {
+		}
+		return articles;
 	}
 
 }

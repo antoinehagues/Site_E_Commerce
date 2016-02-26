@@ -14,7 +14,7 @@ public class HomeController extends ActionSupport{
 	
 	public String execute(){
 		db.init();
-		setArticles((ArrayList<ArticleBean>)db.getAllArticles());
+		setArticles((ArrayList<ArticleBean>)db.getAllArticles("2"));
 		db.close();
 		return "home";
 	}

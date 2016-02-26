@@ -9,6 +9,7 @@ public class ArticleController extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
+	private int articleNumber;
 	private DBCommerceController db = new DBCommerceController();
 	private ArticleBean article;
 	
@@ -21,8 +22,11 @@ public class ArticleController extends ActionSupport{
 
 	public String addToPanier(){
 		db.init();
-		db.addArticleToPanier(id);
+		int status = db.addArticleToPanier(id, (int)articleNumber, "1");
 		db.close();
+		if(status > 0){
+			return "addToPanier";
+		}
 		return "addToPanier";
 	}
 	
@@ -40,5 +44,13 @@ public class ArticleController extends ActionSupport{
 
 	public void setArticle(ArticleBean article) {
 		this.article = article;
+	}
+
+	public int getArticleNumber() {
+		return articleNumber;
+	}
+
+	public void setArticleNumber(int articleNumber) {
+		this.articleNumber = articleNumber;
 	}
 }

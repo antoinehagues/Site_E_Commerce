@@ -5,7 +5,7 @@
 
 <struts>
 	<constant name="struts.custom.i18n.resources" value="resources.messages" />
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="false" />
 	
 	<package name="Home"  namespace="/home" extends="struts-default"> 
