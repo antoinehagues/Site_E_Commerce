@@ -1,7 +1,12 @@
 package com.hitema.login;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import com.hitema.beans.UserBean;
 import com.hitema.db.DBUserController;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginController extends ActionSupport {
@@ -10,6 +15,7 @@ public class LoginController extends ActionSupport {
 	private DBUserController db = new DBUserController();
 	private String motdepasse;
 	private Boolean form=false;
+	private Map request =(Map)ActionContext.getContext();
 
 	public String execute(){
 		System.out.print("Passage dans login "+pseudo+" "+motdepasse);
@@ -19,6 +25,9 @@ public class LoginController extends ActionSupport {
 		    user=db.Connection(pseudo, motdepasse);
 			db.close();
 			if(user!=null){
+				Map session = (Map) getRequest().get("session");
+				session.put("User", user);
+			
 				return "success";
 			}
 		}
@@ -50,5 +59,13 @@ public class LoginController extends ActionSupport {
 
 	public void setForm(boolean form) {
 		this.form = form;
+	}
+
+	public Map getRequest() {
+		return request;
+	}
+
+	public void setRequest(Map request) {
+		this.request = request;
 	}
 }
