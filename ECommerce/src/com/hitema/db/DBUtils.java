@@ -20,8 +20,8 @@ public class DBUtils {
 	protected final static String USER_PRENOM = "prenom";
 	protected final static String USER_MONTANT = "montant";
 	protected final static String USER_PSEUDO= "pseudo";
-	protected final static String USER_ID= "id_user";
-	protected final static String USER_HISTORIQUE = "id_historique";
+	protected final static String USER_ID= "id";
+	protected final static String USER_HISTORIQUE = "historique";
 	
 	public static ArticleBean getArticleFromResultSet(ResultSet rs) throws SQLException {
 		ArticleBean article = new ArticleBean();
@@ -59,6 +59,7 @@ public class DBUtils {
 			user.setPseudo(rs.getString(USER_PSEUDO));
 			user.setId(rs.getString(USER_ID));
 			user.setMontant(rs.getString(USER_MONTANT));
+			user.setHistorique(rs.getString(USER_HISTORIQUE));
 		}
 		return user;
 	}

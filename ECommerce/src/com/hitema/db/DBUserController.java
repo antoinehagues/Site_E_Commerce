@@ -26,7 +26,9 @@ public class DBUserController {
         ps.setString(2, motdepasse);
         ResultSet rs = ps.executeQuery();
 		Id_User=rs.getString("id_user");
+		
 		if(Id_User!=""){
+			System.out.println(Id_User);
 			UserBean userBean = DBUtils.getUserFromResultSet(rs);
 			rs.close();
 			return userBean;

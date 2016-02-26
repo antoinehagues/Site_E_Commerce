@@ -15,7 +15,7 @@ public class LoginController extends ActionSupport {
 	private DBUserController db = new DBUserController();
 	private String motdepasse;
 	private Boolean form=false;
-	private Map request =(Map)ActionContext.getContext();
+	private ActionContext request =ActionContext.getContext();
 
 	public String execute(){
 		System.out.print("Passage dans login "+pseudo+" "+motdepasse);
@@ -61,11 +61,13 @@ public class LoginController extends ActionSupport {
 		this.form = form;
 	}
 
-	public Map getRequest() {
+	public ActionContext getRequest() {
 		return request;
 	}
 
-	public void setRequest(Map request) {
+	public void setRequest(ActionContext request) {
 		this.request = request;
 	}
+
+	
 }
