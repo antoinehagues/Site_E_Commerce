@@ -5,38 +5,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.hitema.beans.UserBean;
+
 public class DBUserController {
 	
 	private DBController db ;
-	private String Nom;
-	private String Prenom;
-	private String Id_User;
-	private String Montant;
-	private String Id_Historique;
-	
 	
 	public void init(){
 		db = new DBController();
 	}
 	
-	public String Connexion (String pseudo , String motdepasse){
+	public UserBean Connection (String pseudo , String motdepasse){
+		String Id_User;
+		UserBean user=new UserBean();
 		try {
-		String sql = "SELECT nom , prenom , id_historique , id_user , montant FROM user WHERE pseudo=? AND mdp=?";
+		String sql = "SELECT * FROM user WHERE pseudo=? AND mdp=?";
 		Connection connection = db.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, pseudo);
         ps.setString(2, motdepasse);
         ResultSet rs = ps.executeQuery();
-		Id_User=rs.getString("id_ser");
-		rs.close();
+		Id_User=rs.getString("id_user");
+		if(Id_User!=""){
+			UserBean userBean = DBUtils.getUserFromResultSet(rs);
+			rs.close();
+			return userBean;
+		}
 		
 		} catch (SQLException e) {}
-		if(Id_User!=""){
-			return Id_User;
-		}
-		else{
-			return "Erreur de connection Pseudo / Mot De Passe";
-		}
+		return null;
+		
 	}
 	
 	public String AddUser(String pseudo,String mdp,String nom,String prenom){
