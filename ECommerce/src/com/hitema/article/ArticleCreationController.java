@@ -6,6 +6,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ArticleCreationController extends ActionSupport{
 
 	private String name;
+	private String ref;
+	private String prix;
+	private String description;
 	private Boolean form = false;
 	private DBCommerceController db = new DBCommerceController();
 	
@@ -13,7 +16,7 @@ public class ArticleCreationController extends ActionSupport{
 		int status = 0;
 		if(getForm()){
 			db.init();
-			status = db.addArticle(this.getName());  
+			status = db.addArticle(this.getName(), this.getRef(), this.getPrix(), this.getDescription());  
 			db.close();
 		}
 	    if(status>0){
@@ -38,5 +41,35 @@ public class ArticleCreationController extends ActionSupport{
 
 	public void setForm(Boolean form) {
 		this.form = form;
+	}
+
+
+	public String getRef() {
+		return ref;
+	}
+
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+
+	public String getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(String prix) {
+		this.prix = prix;
+	}
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

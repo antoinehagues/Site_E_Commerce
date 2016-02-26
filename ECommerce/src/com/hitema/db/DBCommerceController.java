@@ -47,13 +47,16 @@ public class DBCommerceController{
 		return articles;
 	}
 	
-	public int addArticle(String name) {
+	public int addArticle(String name, String ref, String prix, String description) {
 		int status = 0;
 		try {
-			String sql = "INSERT INTO article (ref,prix,nom,img,description) VALUES ('',25,?,'','TESTDESCRIPT')";
+			String sql = "INSERT INTO article (ref,prix,nom,img,description) VALUES (?,?,?,'',?)";
 			Connection connection = db.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, name);
+			ps.setString(1, ref);
+			ps.setString(2, prix);
+			ps.setString(3, name);
+			ps.setString(4, description);
 			status=ps.executeUpdate(); ;
 			connection.close();
 		} catch (SQLException e) {
