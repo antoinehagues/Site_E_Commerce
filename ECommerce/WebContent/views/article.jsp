@@ -17,10 +17,10 @@
 			<button type="button" class="btn btn-info">
 				Prix : <s:property value="article.prix" /> euros
 			</button>
-			<s:url namespace="/panier" action="panier.action" var="addToPanier" >
+			<s:url namespace="/article" action="panier.action" var="addToPanier" >
 				    <s:param name="id"><s:property value="article.id"/></s:param>
 				</s:url>
-	         <a class="btn btn-success" href="<s:property value="#addToPanier" />" >Ajouter au panier</a>
+	         <a class="btn btn-success" href="<s:action name="addToPanier" />" >Ajouter au panier</a>
 		</div>
 	</div>
 </div>

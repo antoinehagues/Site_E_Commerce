@@ -69,4 +69,8 @@ public class DBCommerceController{
 		db.close();
 	}
 
+	public void addArticleToPanier(String id) {
+				System.out.println(id);
+	}
+
 }

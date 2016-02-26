@@ -19,6 +19,13 @@ public class ArticleController extends ActionSupport{
 		return "article";
 	}
 
+	public String addToPanier(){
+		db.init();
+		db.addArticleToPanier(id);
+		db.close();
+		return "addToPanier";
+	}
+	
 	public String getId() {
 		return id;
 	}
